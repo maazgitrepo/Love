@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>💖 For Ayesha Rao 💖</title>
+<title>💖 For Ayesha 💖</title>
 
 <style>
 body {
@@ -49,11 +49,15 @@ button {
     color: white;
 }
 
+/* NO button style - fixed within viewport */
 #no {
     background: #f44336;
     color: white;
-    position: absolute;
-    transition: all 0.1s ease;
+    position: fixed; /* fix position so it stays on screen */
+    top: 50%;        /* start in center */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease;
 }
 
 /* HEARTS */
@@ -76,4 +80,44 @@ button {
 <div class="box" id="box">
     <h1>Will you marry me? 💍</h1>
     <button id="yes" onclick="yesClicked()">Yes ❤️</button>
-    <button id="no" onmouseover="moveNo()">No 💔</but
+    <button id="no" onmouseover="moveNo()">No 💔</button>
+</div>
+
+<script>
+function yesClicked() {
+    document.getElementById("box").innerHTML = `
+        <h1>💖 Ayesha 💖</h1>
+        <h2>You will be my Valentine 💘</h2>
+        <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" width="220">
+        <p>Forever & Always ❤️</p>
+    `;
+}
+
+function moveNo() {
+    const noBtn = document.getElementById("no");
+
+    // ensure button stays fully within viewport
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+}
+
+/* HEART GENERATOR */
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 6000);
+}, 300);
+</script>
+
+</body>
+</html>
