@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 💍</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #ffe6f0;
+        }
+        .box {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #no {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1>Will you marry me? 💍</h1>
+    <button id="yes" onclick="yesClicked()">Yes ❤️</button>
+    <button id="no" onmouseover="moveNo()">No 💔</button>
+</div>
+
+<script>
+    function yesClicked() {
+        alert("Yaaaay! 💖 I knew it!");
+    }
+
+    function moveNo() {
+        const noBtn = document.getElementById("no");
+        noBtn.style.left = Math.random() * 80 + "vw";
+        noBtn.style.top = Math.random() * 80 + "vh";
+    }
+</script>
+
+</body>
+</html>
